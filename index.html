@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Driving School - Professional Driving Lessons</title>
+    <title>Advanced Driving School - Professional Driving Lessons in Dallas</title>
     <style>
-        /* Reset and Base Styles */
+        /* Modern CSS Reset */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
         
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
         }
         
         a {
@@ -27,84 +44,174 @@
             list-style: none;
         }
         
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
         .container {
-            width: 90%;
+            width: 92%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
         }
         
         .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #ff6b00;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            background-color: var(--primary);
             color: white;
-            border-radius: 4px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 600;
             text-transform: uppercase;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            font-size: 15px;
+            white-space: nowrap;
+            gap: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         .btn:hover {
-            background-color: #e05d00;
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e69009;
         }
         
         .text-center {
             text-align: center;
         }
         
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -12px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
         /* Header Styles */
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: fixed;
             width: 100%;
             z-index: 1000;
+            backdrop-filter: blur(8px);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 18px 0;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff6b00;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
         }
         
-        .logo span {
-            color: #333;
+        .logo-icon {
+            font-size: 28px;
+            color: var(--secondary);
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
         
         nav ul {
             display: flex;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
+            gap: 25px;
         }
         
         nav ul li a {
             font-weight: 600;
             transition: color 0.3s;
+            font-size: 16px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
         }
         
         nav ul li a:hover {
-            color: #ff6b00;
+            color: var(--primary);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1630406144797-821be1f35d75?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 100vh;
+            min-height: 700px;
             display: flex;
             align-items: center;
             color: white;
@@ -113,91 +220,121 @@
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
         
         .hero p {
             font-size: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         /* About Section */
-        .about {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: #ff6b00;
-            bottom: -10px;
-            left: 0;
-        }
-        
         .about-content {
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 40px;
+            align-items: center;
         }
         
         .about-text {
-            flex: 1;
+            order: 2;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.7;
         }
         
         .about-image {
-            flex: 1;
-            border-radius: 8px;
+            order: 1;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
         .about-image img {
             width: 100%;
             height: auto;
-            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 500;
         }
         
         /* Services Section */
         .services {
-            padding: 80px 0;
-            background-color: #f9f9f9;
+            background-color: #f1f5f9;
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
-            margin-top: 40px;
         }
         
         .service-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
         .service-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
         }
         
@@ -213,67 +350,95 @@
         }
         
         .service-content {
-            padding: 20px;
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-content h3 {
             font-size: 22px;
-            margin-bottom: 10px;
-            color: #ff6b00;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            flex: 1;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .price:before {
+            content: '$';
+            font-size: 16px;
+        }
+        
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
         }
         
         /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-        }
-        
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
-            margin-top: 40px;
         }
         
         .testimonial-card {
             background-color: white;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             position: relative;
         }
         
         .testimonial-card:before {
             content: '"';
             font-size: 80px;
-            color: #ff6b00;
-            opacity: 0.2;
+            color: var(--primary);
+            opacity: 0.1;
             position: absolute;
             top: 10px;
             left: 20px;
+            font-family: serif;
+            line-height: 1;
         }
         
         .testimonial-content {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-style: italic;
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
         
         .testimonial-author {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
         
         .author-image {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 15px;
-        }
-        
-        .author-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--primary);
         }
         
         .author-info h4 {
@@ -283,28 +448,43 @@
         
         .author-info p {
             font-size: 14px;
-            color: #777;
+            color: var(--gray);
+        }
+        
+        .rating {
+            color: var(--secondary);
+            margin-top: 5px;
         }
         
         /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
         .contact-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 40px;
         }
         
         .contact-info {
-            flex: 1;
+            background-color: var(--primary);
+            padding: 40px;
+            border-radius: 12px;
+            color: white;
         }
         
         .contact-info h3 {
             font-size: 24px;
-            margin-bottom: 20px;
-            color: #ff6b00;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
         }
         
         .contact-details {
@@ -312,22 +492,65 @@
         }
         
         .contact-details p {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
         }
         
         .contact-details i {
-            margin-right: 10px;
-            color: #ff6b00;
+            font-size: 20px;
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
         }
         
         .contact-form {
-            flex: 1;
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .contact-form h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
         }
         
         .form-group {
@@ -336,191 +559,601 @@
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 600;
+            font-size: 15px;
+            color: var(--dark);
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
         .form-group textarea {
             height: 150px;
+            resize: vertical;
+        }
+        
+        /* Booking CTA */
+        .booking-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .booking-cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .booking-cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
         
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: var(--dark);
             color: white;
-            padding: 40px 0 20px;
+            padding: 60px 0 20px;
         }
         
         .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-col h3 {
             font-size: 20px;
             margin-bottom: 20px;
-            color: #ff6b00;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            font-size: 15px;
+            opacity: 0.8;
+            line-height: 1.7;
         }
         
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-col ul li a {
+            font-size: 15px;
+            transition: all 0.3s;
+            opacity: 0.8;
         }
         
         .footer-col ul li a:hover {
-            color: #ff6b00;
+            color: var(--secondary);
+            opacity: 1;
+            padding-left: 5px;
         }
         
-        .social-links {
+        .footer-contact p {
             display: flex;
-            gap: 15px;
+            align-items: flex-start;
+            gap: 10px;
         }
         
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: #444;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: #ff6b00;
-            transform: translateY(-3px);
+        .footer-contact i {
+            color: var(--secondary);
+            font-size: 16px;
+            margin-top: 3px;
         }
         
         .copyright {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #444;
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Safety Banner */
+        .safety-banner {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            position: relative;
+            top: 80px;
+        }
+        
+        /* Floating Call Button */
+        .call-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--success);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
+        }
+        
+        .call-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .call-button i {
+            font-size: 30px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 60px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            font-size: 15px;
         }
         
         /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-            }
-            
-            nav ul li {
-                margin-left: 15px;
-                margin-right: 15px;
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 42px;
             }
             
             .hero h1 {
-                font-size: 36px;
+                font-size: 56px;
             }
             
             .hero p {
-                font-size: 18px;
+                font-size: 22px;
             }
             
             .about-content {
-                flex-direction: column;
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-text {
+                order: 1;
+            }
+            
+            .about-image {
+                order: 2;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
                 flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            nav ul li a {
+                font-size: 20px;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">Advanced <span>Driving School</span></div>
+            <div class="logo">
+                <i class="fas fa-car-side logo-icon"></i>
+                <span>Advanced Driving</span>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#services">Courses</a></li>
+                    <li><a href="#features">Why Us</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Safety Banner -->
+    <div class="safety-banner">
+        <i class="fas fa-shield-alt"></i> Certified Instructors | Modern Vehicles | 98% Pass Rate
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Professional Driving Lessons in Your Area</h1>
-            <p>Learn to drive safely and confidently with our certified instructors. Flexible schedules tailored to your needs.</p>
-            <a href="#booking" class="btn">Book Your Lesson Now</a>
+            <h1>Master The Road With Dallas' Top Driving School</h1>
+            <p>Get behind the wheel with confidence. Our certified instructors provide personalized lessons to help you become a safe, skilled driver.</p>
+            <div class="hero-buttons">
+                <a href="tel:214-994-0695" class="btn"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Book Lesson</a>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title">About Our Driving School</h2>
+            <h2 class="section-title text-center">About Our Driving School</h2>
+            <p class="section-subtitle text-center">Professional instruction from experienced teachers in modern, well-maintained vehicles</p>
+            
             <div class="about-content">
                 <div class="about-text">
-                    <p>Advanced Driving School, owned and operated by Kazi Islam, has been providing top-quality driving instruction for over 10 years. Our mission is to create safe, confident drivers through patient, professional teaching methods.</p>
-                    <p>We understand that learning to drive can be stressful, which is why our instructors are trained to create a calm, supportive learning environment. Whether you're a complete beginner or looking to refresh your skills, we'll tailor our lessons to your individual needs.</p>
-                    <p>All our vehicles are modern, well-maintained, and equipped with dual controls for maximum safety during lessons.</p>
-                    <a href="#services" class="btn">Our Services</a>
+                    <p>At Advanced Driving School, we've been shaping confident drivers in Dallas for over 15 years. Our approach combines patience, expertise, and modern teaching techniques to ensure you not only pass your test but become a safe driver for life.</p>
+                    <p>We specialize in helping nervous drivers overcome their anxiety behind the wheel. Our instructors are trained to create a supportive, stress-free learning environment tailored to your individual needs.</p>
+                    <p>All lessons are conducted in late-model vehicles equipped with dual controls for maximum safety, featuring the latest safety technologies like automatic emergency braking and blind spot monitoring.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Pass Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">Students Taught</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Satisfaction</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1581093196277-1f92cce5a5a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Driving instructor teaching student">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Instructor teaching student driver">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title text-center">Why Choose Advanced Driving</h2>
+            <p class="section-subtitle text-center">We go beyond basic instruction to create truly exceptional drivers</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Certified Instructors</h3>
+                    <p>All instructors are state-certified with extensive experience teaching students of all skill levels.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Modern Vehicles</h3>
+                    <p>Late-model cars with dual controls, safety features, and automatic transmission options.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>Lessons available 7 days a week with morning, afternoon, and evening time slots.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Road Test Prep</h3>
+                    <p>Practice on actual test routes with mock exams to ensure you're fully prepared.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety Focus</h3>
+                    <p>Defensive driving techniques that protect you beyond just passing the test.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Affordable Packages</h3>
+                    <p>Competitive pricing with package discounts and payment plans available.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Patient Approach</h3>
+                    <p>Special techniques for nervous drivers or those who need extra support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>DPS Approved</h3>
+                    <p>Official licensing courses and road tests administered on-site.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="section" id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
+            <h2 class="section-title text-center">Our Driving Courses</h2>
+            <p class="section-subtitle text-center">Comprehensive programs tailored to your specific needs</p>
+            
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beginner driving lessons">
+                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Adult driver education">
                     </div>
                     <div class="service-content">
-                        <h3>Beginner Lessons</h3>
-                        <p>Perfect for first-time drivers. We'll cover all the basics from vehicle controls to safe driving techniques.</p>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <h3>Adult Driver Education</h3>
+                        <p>Complete the state-required 6-hour course for adult learners (18+). Includes classroom instruction and behind-the-wheel training.</p>
+                        <div class="service-meta">
+                            <div class="price">120</div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1585076641399-5c06d1b3365f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Road test preparation">
+                        <img src="https://images.unsplash.com/photo-1502224562085-639556652f33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Teen driving lessons">
                     </div>
                     <div class="service-content">
-                        <h3>Road Test Preparation</h3>
-                        <p>Get ready for your driving test with our comprehensive preparation package, including mock tests.</p>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <h3>Teen Driving Program</h3>
+                        <p>Comprehensive package for teens including permit prep, 32 hours of instruction, and road test preparation.</p>
+                        <div class="service-meta">
+                            <div class="price">550</div>
+                            <a href="#contact" class="btn">Get Started</a>
+                        </div>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Refresher courses">
+                        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Road test">
                     </div>
                     <div class="service-content">
-                        <h3>Refresher Courses</h3>
-                        <p>For experienced drivers who want to brush up on their skills or gain confidence after a break from driving.</p>
-                        <a href="#booking" class="btn">Book Now</a>
+                        <h3>DPS Road Test</h3>
+                        <p>Official driving test administered by our certified examiners. Vehicle provided if needed.</p>
+                        <div class="service-meta">
+                            <div class="price">90</div>
+                            <a href="#contact" class="btn">Schedule Test</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1516862523118-a3724eb136d7?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Private lessons">
+                    </div>
+                    <div class="service-content">
+                        <h3>Private Lessons</h3>
+                        <p>Customized one-on-one instruction tailored to your specific needs and skill level.</p>
+                        <div class="service-meta">
+                            <div class="price">60/hr</div>
+                            <a href="#contact" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1478442231640-a78bbd3bcd62?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Refresher course">
+                    </div>
+                    <div class="service-content">
+                        <h3>Refresher Course</h3>
+                        <p>For licensed drivers who want to improve skills or regain confidence after time away from driving.</p>
+                        <div class="service-meta">
+                            <div class="price">180</div>
+                            <a href="#contact" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Defensive driving">
+                    </div>
+                    <div class="service-content">
+                        <h3>Defensive Driving</h3>
+                        <p>Advanced techniques to anticipate hazards and prevent accidents. Insurance discounts may apply.</p>
+                        <div class="service-meta">
+                            <div class="price">150</div>
+                            <a href="#contact" class="btn">Enroll Today</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -528,41 +1161,57 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="section" id="testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Students Say</h2>
+            <h2 class="section-title text-center">Success Stories</h2>
+            <p class="section-subtitle text-center">Hear from our satisfied students</p>
+            
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>Kazi was an amazing instructor! Patient, knowledgeable, and made me feel completely at ease. I passed my test first time thanks to his excellent teaching.</p>
+                        <p>After failing my test twice with another school, I came to Advanced Driving. The difference was night and day. My instructor was so patient and really broke things down in a way I could understand. Passed on my first try with them!</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J.">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah K.">
                         </div>
                         <div class="author-info">
-                            <h4>Sarah J.</h4>
-                            <p>Former Student</p>
+                            <h4>Sarah K.</h4>
+                            <p>Adult Student</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>After failing my test with another school, I came to Advanced Driving School. The difference was incredible - I actually understood what I was doing this time!</p>
+                        <p>I was terrified of driving after a bad accident. The instructors here helped me regain my confidence with their calm, supportive approach. Now I drive everywhere and actually enjoy it!</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T.">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James L.">
                         </div>
                         <div class="author-info">
-                            <h4>Michael T.</h4>
-                            <p>Former Student</p>
+                            <h4>James L.</h4>
+                            <p>Refresher Course</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>I was nervous about driving after a 15-year break. The refresher course gave me back my confidence on the road. Highly recommend!</p>
+                        <p>The 10-hour package was worth every penny. My instructor tailored each lesson to focus on my weak areas. By test day, I felt completely prepared. Highly recommend!</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
@@ -570,7 +1219,14 @@
                         </div>
                         <div class="author-info">
                             <h4>Lisa M.</h4>
-                            <p>Refresher Course Student</p>
+                            <p>Teen Program</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -578,23 +1234,35 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Booking CTA -->
+    <section class="booking-cta">
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
+            <h2>Ready to Start Your Driving Journey?</h2>
+            <p>Contact us today to schedule your first lesson or road test. Flexible hours available weekdays and weekends.</p>
+            <a href="tel:214-994-0695" class="btn"><i class="fas fa-phone"></i> Call Now: 214-994-0695</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Get In Touch</h2>
+            <p class="section-subtitle text-center">Have questions? We're here to help!</p>
+            
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Get In Touch</h3>
+                    <h3>Contact Information</h3>
                     <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Driving Lane, Your City, State 12345</p>
-                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                        <p><i class="fas fa-envelope"></i> info@advanceddrivingschool.com</p>
-                        <p><i class="fas fa-clock"></i> Mon-Fri: 8am-8pm, Sat: 9am-5pm</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 4100 Spring Valley Rd, Suite #158<br>Dallas, Texas 75244</p>
+                        <p><i class="fas fa-phone"></i> (214) 994-0695</p>
+                        <p><i class="fas fa-envelope"></i> AdvancedDrivingSchoolUS@gmail.com</p>
+                        <p><i class="fas fa-clock"></i> Hours: Mon-Sun 7am-9pm</p>
                     </div>
+                    <h3 style="margin-top: 30px;">Follow Us</h3>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-yelp"></i></a>
                     </div>
                 </div>
@@ -602,34 +1270,37 @@
                     <h3>Send Us a Message</h3>
                     <form>
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Full Name</label>
                             <input type="text" id="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email Address</label>
                             <input type="email" id="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="service">Service Interested In</label>
+                            <select id="service">
+                                <option value="">Select a service</option>
+                                <option value="adult-class">Adult Driver Education</option>
+                                <option value="teen-program">Teen Driving Program</option>
+                                <option value="road-test">DPS Road Test</option>
+                                <option value="private-lessons">Private Lessons</option>
+                                <option value="refresher-course">Refresher Course</option>
+                                <option value="defensive-driving">Defensive Driving</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
                             <textarea id="message" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn" style="width: 100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking" style="padding: 80px 0; background-color: #fff;">
-        <div class="container text-center">
-            <h2 class="section-title">Book Your Lesson Today</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px;">Ready to start your driving journey? Book your lesson online now with our easy scheduling system.</p>
-            <a href="https://calendly.com/advanced-driving-school" class="btn" style="font-size: 18px; padding: 15px 30px;">Book Online Now</a>
         </div>
     </section>
 
@@ -639,40 +1310,159 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <h3>Advanced Driving School</h3>
-                    <p>Providing professional driving instruction since 2010. Our certified instructors are committed to creating safe, confident drivers.</p>
+                    <p>Dallas' premier driving school with a proven track record of creating safe, confident drivers through personalized instruction.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#services">Courses</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Services</h3>
+                    <h3>Courses</h3>
                     <ul>
-                        <li><a href="#services">Beginner Lessons</a></li>
-                        <li><a href="#services">Road Test Prep</a></li>
-                        <li><a href="#services">Refresher Courses</a></li>
+                        <li><a href="#services">Adult Education</a></li>
+                        <li><a href="#services">Teen Program</a></li>
+                        <li><a href="#services">Road Tests</a></li>
+                        <li><a href="#services">Private Lessons</a></li>
                         <li><a href="#services">Defensive Driving</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@advanceddrivingschool.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Driving Lane, Your City</li>
-                    </ul>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> (214) 994-0695</p>
+                    <p><i class="fas fa-envelope"></i> AdvancedDrivingSchoolUS@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 4100 Spring Valley Rd<br>Dallas, TX 75244</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Advanced Driving School. All Rights Reserved. Owned and operated by Kazi Islam.</p>
+                <p>&copy; 2023 Advanced Driving School. All Rights Reserved. | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Terms of Service</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- Floating Call Button -->
+    <a href="tel:214-994-0695" class="call-button">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+            
+            // Toggle body scroll when menu is open
+            if(nav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.08)';
+            }
+        });
+        
+        // Form submission handling
+        const form = document.querySelector('.contact-form form');
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you shortly.');
+                form.reset();
+            });
+        }
+    </script>
+        <!-- Calendly Booking Button -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/your-calendly-link'});return false;" class="calendly-button">
+        <i class="fas fa-calendar-alt"></i> Book Lesson
+    </a>
+
+    <style>
+        /* Calendly Button Styles */
+        .calendly-button {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background-color: #2563eb;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            font-weight: 600;
+            font-size: 15px;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .calendly-button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 767px) {
+            .calendly-button {
+                bottom: 100px;
+                right: 20px;
+                font-size: 0;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .calendly-button i {
+                font-size: 24px;
+                margin-right: 0;
+            }
+        }
+    </style>
 </body>
 </html>
